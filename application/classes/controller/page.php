@@ -1,15 +1,15 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Controller_Page extends Controller {
+class Controller_Page extends Controller_Application {
 
 	public function action_index()
 	{
-		$this->request->response = 'hello, world!';
+		$this->template->content = 'hello, world!';
 	}
 
-	public function action_wtf()
+	public function action_test()
 	{
-		$this->request->response = 'hello, sadn!';
+		$this->template->content = 'hello, sadn!';
 	}
 
 }

@@ -8,7 +8,7 @@
  * @see  http://kohanaframework.org/guide/using.configuration
  * @see  http://php.net/timezones
  */
-date_default_timezone_set('America/Chicago');
+date_default_timezone_set('Europe/Berlin');
 
 /**
  * Set the default locale.
@@ -53,10 +53,6 @@ Kohana::init(array(
 	'base_url'   => '/',
 ));
 
-/**
- * Attach the file write to logging. Multiple writers are supported.
- */
-Kohana::$log->attach(new Kohana_Log_File(APPPATH.'logs'));
 
 /**
  * Attach a file reader to config. Multiple readers are supported.
@@ -64,15 +60,23 @@ Kohana::$log->attach(new Kohana_Log_File(APPPATH.'logs'));
 Kohana::$config->attach(new Kohana_Config_File);
 
 /**
+ * Attach the file write to logging. Multiple writers are supported.
+ */
+if (Kohana::config('global')->environment !== Kohana::DEVELOPMENT)
+{
+	Kohana::$log->attach(new Kohana_Log_File(APPPATH.'logs'));
+}
+
+/**
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
 Kohana::modules(array(
-	// 'auth'       => MODPATH.'auth',       // Basic authentication
-	// 'cache'      => MODPATH.'cache',      // Caching with multiple backends
-	// 'codebench'  => MODPATH.'codebench',  // Benchmarking tool
 	'database'   => MODPATH.'database',  	 // Database access
 	'image'      => MODPATH.'image',     	 // Image manipulation
 	'orm'        => MODPATH.'orm',       	 // Object Relationship Mapping
+	// 'auth'       => MODPATH.'auth',       // Basic authentication
+	// 'cache'      => MODPATH.'cache',      // Caching with multiple backends
+	// 'codebench'  => MODPATH.'codebench',  // Benchmarking tool
 	// 'oauth'      => MODPATH.'oauth',      // OAuth authentication
 	// 'pagination' => MODPATH.'pagination', // Paging of results
 	// 'unittest'   => MODPATH.'unittest',   // Unit testing
