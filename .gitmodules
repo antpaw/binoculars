@@ -10,3 +10,6 @@
 [submodule "modules/orm"]
 	path = modules/orm
 	url = git://github.com/kohana/orm.git
+[submodule "modules/antpaw_extends"]
+	path = modules/antpaw_extends
+	url = git://github.com/antpaw/kohana-antpaw_extends.git
