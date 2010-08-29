@@ -7,9 +7,9 @@ class Controller_Page extends Controller_Application {
 		$this->template->content = 'hello, world!';
 	}
 	
-	public function action_manage()
+	public function action_manage($id = NULL)
 	{
-		$page = ORM::factory('page', 1);
+		$page = ORM::factory('page', $id);
 		
 		$form = array_merge($_FILES + $_POST);
 		
@@ -26,11 +26,11 @@ class Controller_Page extends Controller_Application {
 			
 			// Background Image
 			$bg_path = $page->add_name_suffix('_bg', $upload);
-			
 			$image
 				->crop(40, $image->height, 0, 0)
 				->save($bg_path);
 			
+			// Save page
 			$page
 				->values(array(
 					'layout'		=> $layout,
@@ -38,11 +38,21 @@ class Controller_Page extends Controller_Application {
 				))
 				->save();
 			
+			// Clean up
 			unlink($bg_path);
 			unlink($upload_path);
 		}
 		
 		$this->template->content = new View('page/manage', array(
+			'page' => $page,
+		));
+	}
+	
+	public function action_show($id)
+	{
+		$page = ORM::factory('page', $id);
+		
+		$this->template = new View('page/show', array(
 			'page' => $page,
 		));
 	}

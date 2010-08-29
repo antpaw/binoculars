@@ -1,9 +1,4 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
-
-<div style="background: url(data:image/png;base64,<?= $page->background_base64 ?>)">
-	<img src="data:image/png;base64,<?= $page->layout_base64 ?>">
-</div>
-
 <?= form::open(NULL, array('enctype' => 'multipart/form-data')) ?>
 	<div class="node">
 		<div class="label">
