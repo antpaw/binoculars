@@ -9,7 +9,7 @@ class Controller_Page extends Controller_Application {
 	
 	public function action_manage()
 	{
-		$page = ORM::factory("page", 1);
+		$page = ORM::factory('page', 1);
 		
 		$form = array_merge($_FILES + $_POST);
 		
@@ -18,18 +18,28 @@ class Controller_Page extends Controller_Application {
 			// Layout Image
 			$layout = file_get_contents($form['layout']['tmp_name']);
 			
-			// Background Image
-			$upload = upload::save($form['layout'], NULL, 'media/tmp_uploads');
+			// Init setup
+			$upload_path = 'media/tmp_uploads';
+			$upload = pathinfo(upload::save($form['layout'], NULL, $upload_path));
+			$upload_path = $upload_path.'/'.$upload['basename'];
+			$image = Image::factory($upload_path);
 			
-			Image::factory($upload)->crop(20, 40, 100, 100)->save($upload);
-			$background = file_get_contents($upload);
+			// Background Image
+			$bg_path = $page->add_name_suffix('_bg', $upload);
+			
+			$image
+				->crop(40, $image->height, 0, 0)
+				->save($bg_path);
 			
 			$page
 				->values(array(
 					'layout'		=> $layout,
-					'background'	=> $background,
+					'background'	=> file_get_contents($bg_path),
 				))
 				->save();
+			
+			unlink($bg_path);
+			unlink($upload_path);
 		}
 		
 		$this->template->content = new View('page/manage', array(

@@ -38,4 +38,9 @@ class Model_Page extends ORM {
 		
 		return parent::__get($key);
 	}
+	
+	public function add_name_suffix($suffix, $upload)
+	{
+		return $upload['dirname'].'/'.$upload['filename'].$suffix.'.'.$upload['extension'];
+	}
 }
