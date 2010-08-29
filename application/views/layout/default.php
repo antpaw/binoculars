@@ -2,11 +2,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset=utf-8>
+		<meta charset="utf-8">
 		<title>Binculars</title>
 		<?= html::style('media/stylesheets/application.css') ?>
-		<!-- <?= html::script('http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js') ?> -->
+		<!--
+		<?= html::script('http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js') ?>
 		<?= html::script('media/javascripts/application.js') ?>
+		-->
 	</head>
 	<body>
 		<header>

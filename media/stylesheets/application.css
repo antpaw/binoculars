@@ -1,0 +1,84 @@
+.form {
+	display: table;
+}
+	.form .node {
+		display: table-row;
+	}
+		.form .node .label,
+		.form .node .input {
+			display: table-cell;
+			padding: 0 20px 20px 0;
+		}
+		.form .node .label {
+			text-align: right;
+			vertical-align: top;
+			width: 150px;
+		}
+		.form .node .input {
+			width: 300px;
+		}
+	.form input,
+	.form label {
+		vertical-align: top;
+	}
+	.form input[type="text"],
+	.form input[type="password"],
+	.form input[type="submit"],
+	.form textarea {
+		border: 1px solid #CDD0D3;
+		padding: 4px 5px;
+		width: 300px;
+		color: #000066;
+		background: #fff;
+		position: relative;
+		top: -2px;
+	}
+	.form textarea {
+		 font: 13px/1.5 Arial,'Liberation Sans',FreeSans,sans-serif;
+	}
+	.form input[type="text"]:focus,
+	.form .node:hover input[type="text"],
+	.form input[type="password"]:focus,
+	.form .node:hover input[type="password"],
+	.form input[type="submit"]:focus,
+	.form .node:hover input[type="submit"],
+	.form textarea:focus,
+	.form .node:hover textarea {
+		border-color: #000066;
+	}
+	.form textarea.wymeditor,
+	.form .wym_box {
+		width: 700px;
+	}
+	.form iframe {
+		height: 500px !important;
+	}
+	.form .wym_area_bottom {
+		display: none !important;
+	}
+	.form input[type="submit"] {
+		width: auto;
+		padding: 3px;
+		padding-right: 23px;
+		text-align: left;
+		cursor: pointer;
+		background: #F3F6FB url("../images/page/bt_arrow.gif") no-repeat right 9px;
+		border-color: #CDD0D3;
+		color: #000066;
+	}
+	.form label[for] {
+		cursor: pointer;
+	}
+	.form label[for].description:after {
+		content: '';
+	}
+	.form label:after {
+		content: ':';
+	}
+		.form .input .number {
+			width: 100px;
+			margin-right: 5px;
+		}
+		.form .input .datepicker {
+			width: 255px;
+		}

@@ -26,4 +26,16 @@ class Model_Page extends ORM {
 		),
 	*/
 	);
+	
+	public function __get($key)
+	{
+		if (strpos($key, '_base64') !== FALSE)
+		{
+			return base64_encode(
+				parent::__get(str_replace('_base64', NULL, $key)
+			));
+		}
+		
+		return parent::__get($key);
+	}
 }
