@@ -35,6 +35,7 @@ class Controller_Page extends Controller_Application {
 				->values(array(
 					'layout'		=> $layout,
 					'background'	=> file_get_contents($bg_path),
+					'settings'		=> serialize(Arr::trim($form['page']['settings'])),
 				))
 				->save();
 			
