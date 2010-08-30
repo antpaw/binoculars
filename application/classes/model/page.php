@@ -27,8 +27,37 @@ class Model_Page extends ORM {
 	*/
 	);
 	
+	protected $_default_settings = array(
+		'layout_align'	=> 'center',
+		'bg_align'		=> 'right',
+		'bg_width'		=> 30,
+	);
+	
+	public function __set($key, $value)
+	{
+		if ($key === 'settings')
+		{
+			return parent::__set(
+				$key,
+				serialize(arr::trim($value))
+			);
+		}
+		
+		return parent::__set($key, $value);
+	}
+	
 	public function __get($key)
 	{
+		if ($key === 'settings')
+		{
+			$settings = parent::__get($key);
+			if ($settings)
+			{
+				return unserialize($settings) + $this->_default_settings;
+			}
+			return $this->_default_settings;
+		}
+		
 		if (strpos($key, '_base64') !== FALSE)
 		{
 			return base64_encode(

@@ -54,6 +54,19 @@ Kohana::init(array(
 	'index_file'	=> '',
 ));
 
+Kohana::modules(array(
+	'database'   		=> MODPATH.'database',  	 // Database access
+	'image'      		=> MODPATH.'image',     	 // Image manipulation
+	'orm'        		=> MODPATH.'orm',       	 // Object Relationship Mapping
+	'antpaw_extends'	=> MODPATH.'antpaw_extends',
+	// 'auth'       => MODPATH.'auth',       // Basic authentication
+	// 'cache'      => MODPATH.'cache',      // Caching with multiple backends
+	// 'codebench'  => MODPATH.'codebench',  // Benchmarking tool
+	// 'oauth'      => MODPATH.'oauth',      // OAuth authentication
+	// 'pagination' => MODPATH.'pagination', // Paging of results
+	// 'unittest'   => MODPATH.'unittest',   // Unit testing
+	// 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
+	));
 
 /**
  * Attach a file reader to config. Multiple readers are supported.
@@ -71,31 +84,33 @@ if (Kohana::config('global')->environment !== Kohana::DEVELOPMENT)
 /**
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
-Kohana::modules(array(
-	'database'   => MODPATH.'database',  	 // Database access
-	'image'      => MODPATH.'image',     	 // Image manipulation
-	'orm'        => MODPATH.'orm',       	 // Object Relationship Mapping
-	// 'auth'       => MODPATH.'auth',       // Basic authentication
-	// 'cache'      => MODPATH.'cache',      // Caching with multiple backends
-	// 'codebench'  => MODPATH.'codebench',  // Benchmarking tool
-	// 'oauth'      => MODPATH.'oauth',      // OAuth authentication
-	// 'pagination' => MODPATH.'pagination', // Paging of results
-	// 'unittest'   => MODPATH.'unittest',   // Unit testing
-	// 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
-	));
 
 /**
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.
  */
-Route::set('page', 'page((/<id>)/<action>)')
+Route::set('page', 'page((/<id>)/<action>)', array('action' => '\D+', 'id' => '\d+'))
 	->defaults(array(
 		'controller' => 'page',
+		'action'	 => 'manage',
 	));
 
-Route::set('default', '(<controller>(/<action>(/<id>)))')
+Route::set('page_short', 'page/<id>', array('id' => '\d+'))
 	->defaults(array(
 		'controller' => 'page',
+		'action'	 => 'show',
+	));
+
+Route::set('page_even_shorter', '<id>', array('id' => '\d+'))
+	->defaults(array(
+		'controller' => 'page',
+		'action'	 => 'show',
+	));
+
+Route::set('default', '(<controller>(/<action>(/<id>)))', array('action' => '\D+', 'id' => '\d+'))
+	->defaults(array(
+		'controller' => 'page',
+		'action'	 => 'manage',
 	));
 
 if ( ! defined('SUPPRESS_REQUEST'))

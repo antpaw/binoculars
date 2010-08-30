@@ -11,10 +11,10 @@
 	<? $settings = $page->settings ?>
 	<div class="node">
 		<div class="label">
-			<?= form::label('page_settings_align', 'Align') ?>
+			<?= form::label('page_settings_layout_align', 'Align') ?>
 		</div>
 		<div class="input">
-			<?= form::text('page[settings][align]', $settings['align'], array('id' => 'page_settings_align')) ?>
+			<?= form::input('page[settings][layout_align]', $settings['layout_align'], array('id' => 'page_settings_align')) ?>
 		</div>
 	</div>
 	

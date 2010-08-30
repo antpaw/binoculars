@@ -24,6 +24,9 @@
 		</style>
 	</head>
 	<body>
+		<?
+		print_r($page->settings);
+		?>
 		<div id="main">
 			<img src="data:image/png;base64,<?= $page->layout_base64 ?>">
 		</div>

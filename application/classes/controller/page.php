@@ -11,7 +11,7 @@ class Controller_Page extends Controller_Application {
 	{
 		$page = ORM::factory('page', $id);
 		
-		$form = array_merge($_FILES + $_POST);
+		$form = $_FILES + $_POST;
 		
 		if ($form)
 		{
@@ -35,7 +35,7 @@ class Controller_Page extends Controller_Application {
 				->values(array(
 					'layout'		=> $layout,
 					'background'	=> file_get_contents($bg_path),
-					'settings'		=> serialize(Arr::trim($form['page']['settings'])),
+					'settings'		=> $form['page']['settings'],
 				))
 				->save();
 			
