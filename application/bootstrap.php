@@ -59,6 +59,7 @@ Kohana::modules(array(
 	'image'      		=> MODPATH.'image',     	 // Image manipulation
 	'orm'        		=> MODPATH.'orm',       	 // Object Relationship Mapping
 	'antpaw_extends'	=> MODPATH.'antpaw_extends',
+	'debugwithstyle'	=> MODPATH.'debugwithstyle',
 	// 'auth'       => MODPATH.'auth',       // Basic authentication
 	// 'cache'      => MODPATH.'cache',      // Caching with multiple backends
 	// 'codebench'  => MODPATH.'codebench',  // Benchmarking tool
