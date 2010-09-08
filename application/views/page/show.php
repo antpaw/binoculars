@@ -1,9 +1,16 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
 <!DOCTYPE html>
+<!--
+	***************************************************
+	HTML, CSS and cropped images provided by Binoculars
+	***************************************************
+	http://binoculars.antpaw.org/
+	***************************************************
+-->
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title><?= '' ?></title>
+		<title><?= $settings['page_title'] ?></title>
 		<style>
 			body, img {
 				padding: 0;
@@ -11,24 +18,18 @@
 				display: block;
 			}
 			body {
-				background: red;
-			}
-			<? if (TRUE): ?>
-			img {
-				margin: 0 auto;
-			}
-			<? endif ?> 
-			#main {
 				background: url(data:image/png;base64,<?= $page->background_base64 ?>);
+			}
+			img {
+				<? if ($settings['layout_align'] === 'center'): ?>
+				margin: 0 auto;
+				<? elseif ($settings['layout_align'] === 'right'): ?>
+				float: right;
+				<? endif ?> 
 			}
 		</style>
 	</head>
 	<body>
-		<?
-		print_r($page->settings);
-		?>
-		<div id="main">
-			<img src="data:image/png;base64,<?= $page->layout_base64 ?>">
-		</div>
+		<img src="data:image/png;base64,<?= $page->layout_base64 ?>">
 	</body>
 </html>

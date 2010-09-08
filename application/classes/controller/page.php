@@ -13,6 +13,8 @@ class Controller_Page extends Controller_Application {
 		
 		$form = $_FILES + $_POST;
 		
+		$settings = $page->settings;
+		
 		if ($form)
 		{
 			// Layout Image
@@ -24,10 +26,22 @@ class Controller_Page extends Controller_Application {
 			$upload_path = $upload_path.'/'.$upload['basename'];
 			$image = Image::factory($upload_path);
 			
+			if (is_array($form['page']['settings']))
+			{
+				$settings = $page->settings = $form['page']['settings'];
+			}
+			
 			// Background Image
 			$bg_path = $page->add_name_suffix('_bg', $upload);
+			
+			$bg_x = 0;
+			if ($settings['bg_width'] !== 'left')
+			{
+				$bg_x = $image->width - $settings['bg_width'];
+			}
+			
 			$image
-				->crop(40, $image->height, 0, 0)
+				->crop($settings['bg_width'], $image->height, $bg_x, 0)
 				->save($bg_path);
 			
 			// Save page
@@ -35,7 +49,6 @@ class Controller_Page extends Controller_Application {
 				->values(array(
 					'layout'		=> $layout,
 					'background'	=> file_get_contents($bg_path),
-					'settings'		=> $form['page']['settings'],
 				))
 				->save();
 			
@@ -45,7 +58,8 @@ class Controller_Page extends Controller_Application {
 		}
 		
 		$this->template->content = new View('page/manage', array(
-			'page' => $page,
+			'page'		=> $page,
+			'settings'	=> $settings,
 		));
 	}
 	
@@ -54,7 +68,8 @@ class Controller_Page extends Controller_Application {
 		$page = ORM::factory('page', $id);
 		
 		$this->template = new View('page/show', array(
-			'page' => $page,
+			'page'		=> ORM::factory('page', $id),
+			'settings'	=> $page->settings,
 		));
 	}
 }

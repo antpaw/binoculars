@@ -1,3 +1,13 @@
+/* reset */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outline:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+/* typo */
+body{font:16px/1.5 Arial,'Liberation Sans',FreeSans,sans-serif}a:focus{outline:1px dotted}hr{border:0 #ccc solid;border-top-width:1px;clear:both;height:0}h1{font-size:25px}h2{font-size:23px}h3{font-size:21px}h4{font-size:19px}h5{font-size:17px}h6{font-size:15px}ol{list-style:decimal}ul{list-style:disc}li{margin-left:30px}p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset,legend{margin-bottom:20px}
+
+body {
+	padding-top: 50px;
+}
+
 .form {
 	display: table;
 }
@@ -12,7 +22,7 @@
 		.form .node .label {
 			text-align: right;
 			vertical-align: top;
-			width: 150px;
+			width: 250px;
 		}
 		.form .node .input {
 			width: 300px;
@@ -28,13 +38,10 @@
 		border: 1px solid #CDD0D3;
 		padding: 4px 5px;
 		width: 300px;
-		color: #000066;
 		background: #fff;
 		position: relative;
 		top: -2px;
-	}
-	.form textarea {
-		 font: 13px/1.5 Arial,'Liberation Sans',FreeSans,sans-serif;
+		font: 16px/1.5 Arial,'Liberation Sans',FreeSans,sans-serif;
 	}
 	.form input[type="text"]:focus,
 	.form .node:hover input[type="text"],
@@ -44,27 +51,13 @@
 	.form .node:hover input[type="submit"],
 	.form textarea:focus,
 	.form .node:hover textarea {
-		border-color: #000066;
-	}
-	.form textarea.wymeditor,
-	.form .wym_box {
-		width: 700px;
-	}
-	.form iframe {
-		height: 500px !important;
-	}
-	.form .wym_area_bottom {
-		display: none !important;
+		border-color: gray;
 	}
 	.form input[type="submit"] {
 		width: auto;
-		padding: 3px;
-		padding-right: 23px;
+		padding: 3px 23px;
 		text-align: left;
 		cursor: pointer;
-		background: #F3F6FB url("../images/page/bt_arrow.gif") no-repeat right 9px;
-		border-color: #CDD0D3;
-		color: #000066;
 	}
 	.form label[for] {
 		cursor: pointer;

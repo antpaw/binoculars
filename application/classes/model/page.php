@@ -29,8 +29,9 @@ class Model_Page extends ORM {
 	
 	protected $_default_settings = array(
 		'layout_align'	=> 'center',
-		'bg_align'		=> 'right',
+		'bg_align'		=> 'left',
 		'bg_width'		=> 30,
+		'page_title'	=> 'layout preview',
 	);
 	
 	public function __set($key, $value)
