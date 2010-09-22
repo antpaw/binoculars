@@ -75,6 +75,18 @@ Kohana::modules(array(
 Kohana::$config->attach(new Kohana_Config_File);
 
 /**
+ * Debug helper
+ */
+function d($var, $die = TRUE)
+{
+	print D::debug($var);
+	if ($die === TRUE)
+	{
+		die();
+	}
+}
+
+/**
  * Attach the file write to logging. Multiple writers are supported.
  */
 if (Kohana::config('global')->environment !== Kohana::DEVELOPMENT)

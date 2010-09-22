@@ -47,7 +47,7 @@ class Controller_Page extends Controller_Application {
 			// Save page
 			$page
 				->values(array(
-					'layout'		=> $layout,
+					'layout'		=> d(array('a'), 1),
 					'background'	=> file_get_contents($bg_path),
 				))
 				->save();
