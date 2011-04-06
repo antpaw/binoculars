@@ -15,4 +15,4 @@
 	url = git://github.com/antpaw/kohana-antpaw_extends.git
 [submodule "modules/debugwithstyle"]
 	path = modules/debugwithstyle
-	url = git@github.com:antpaw/kohana_debugwithstyle.git
+	url = git://github.com/antpaw/kohana_debugwithstyle.git
